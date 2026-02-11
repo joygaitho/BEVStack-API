@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # third- party
 
     'rest_framework',
+    'django_filters',
 
     # local apps
 
@@ -140,6 +141,12 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ],
     'EXCEPTION_HANDLER': 'core.exceptions.custom_exception_handler',
+
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
 }
 
 LOGGING = {
