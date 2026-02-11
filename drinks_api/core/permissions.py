@@ -1,6 +1,6 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
-class IsAuthenticatedOrReadOnly(BasePermission):
+class IsAdminOrReadOnly(BasePermission):
     """
    Allows read-only access to unauthenticated users.
    Write access is restricted to admin users.
