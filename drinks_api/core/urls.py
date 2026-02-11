@@ -5,10 +5,12 @@ from .views import (
     CategoryDetailView,
     DrinkListCreateView,
     DrinkDetailView,
+    process_webhook,
 ) 
 
 urlpatterns = [
     path('health/', health_check, name='health_check'),
+    path('webhook/', process_webhook, name='process-webhook'),
     path('categories/', CategoryListCreateView.as_view(), name='category-list-create'),
     path('categories/<int:pk>/', CategoryDetailView.as_view(), name='category-detail'),
     path('drinks/', DrinkListCreateView.as_view(), name='drink-list-create'),

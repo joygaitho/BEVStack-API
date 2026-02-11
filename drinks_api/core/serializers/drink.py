@@ -4,6 +4,11 @@ from ..models import Drink
 
 class DrinkSerializer(serializers.ModelSerializer):
     category_name = serializers.ReadOnlyField(source="category.name")
+    def validate_price(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("Price must be greater than zero.")
+        return value
+
 
     class Meta:
         model = Drink
