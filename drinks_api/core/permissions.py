@@ -7,9 +7,10 @@ class IsAdminOrReadOnly(BasePermission):
     """
     def has_permission(self, request, view):
         if request.method in SAFE_METHODS:
-            return request.user.is_authenticated  # Allow read-only access for unauthenticated users
+            return True  # Read-only access for everyone
         
         return (
-            request.user.is_authenticated
-            and getattr(request.user, 'role', None) == 'admin'
-        )  # Full access for authenticated users
+            request.user and
+            request.user.is_authenticated and
+            request.user.is_staff
+        )  
