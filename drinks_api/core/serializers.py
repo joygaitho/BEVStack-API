@@ -27,6 +27,6 @@ class DrinkSerializer(serializers.ModelSerializer):
             'category_name',
             'is_available',
             'created_at',
-            'updated_at'
+            'updated_at',
         ]
         read_only_fields = ['id', 'created_at', 'category_name']

@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, generics
+from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets, permissions
 from .models import Category, Drink
@@ -78,9 +79,12 @@ class DrinkDetailView(generics.RetrieveUpdateDestroyAPIView):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by('-created_at')
     serializer_class = CategorySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class DrinkViewSet(viewsets.ModelViewSet):
     queryset = Drink.objects.select_related('category').all().order_by('-created_at')
     serializer_class = DrinkSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    def get_permissions(self):
+        if self.request.method in ['GET']:
+            return [permissions.AllowAny()]
+        return [permissions.IsAdminUser()]
