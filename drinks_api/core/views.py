@@ -5,14 +5,13 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, generics
 
-from .models import Category
-from .serializers import CategorySerializer
+from rest_framework import viewsets, permissions
+from .models import Category, Drink
+from .serializers import CategorySerializer, DrinkSerializer
 from .permissions import IsAdminOrReadOnly
 
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Drink
-from .serializers import DrinkSerializer
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
@@ -75,3 +74,13 @@ class DrinkDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DrinkSerializer
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAdminOrReadOnly]
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all().order_by('-created_at')
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class DrinkViewSet(viewsets.ModelViewSet):
+    queryset = Drink.objects.select_related('category').all().order_by('-created_at')
+    serializer_class = DrinkSerializer
+    permission_classes = [permissions.IsAuthenticated]
