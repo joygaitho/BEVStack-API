@@ -34,7 +34,7 @@ def custom_exception_handler(exc, context):
 
     elif isinstance(exc, Http404):
         response.data = {
-            "error": "Resource not found"
+            "error": "ObjectDoesNotExist"
         }
 
     return response
