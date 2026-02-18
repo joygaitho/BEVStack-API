@@ -594,3 +594,33 @@ Traceback (most recent call last):
     )
 django.core.exceptions.ImproperlyConfigured: Field name `updated_at` is not valid for model `Drink` in `core.serializers.DrinkSerializer`.
 "GET /api/v1/drinks/1/ HTTP/1.1" 500 129650
+Internal Server Error: /api/drinks/2
+Traceback (most recent call last):
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\utils\deprecation.py", line 311, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\middleware\common.py", line 109, in process_response
+    self.get_full_path_with_slash(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\middleware\common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+    ...<9 lines>...
+    )
+RuntimeError: You called this URL via PUT, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining PUT data. Change your form to point to 127.0.0.1:8000/api/drinks/2/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"PUT /api/drinks/2 HTTP/1.1" 500 69206
+Internal Server Error: /api/drinks/2
+Traceback (most recent call last):
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\utils\deprecation.py", line 311, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\middleware\common.py", line 109, in process_response
+    self.get_full_path_with_slash(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Administrator\BEVStack-API\.venv\Lib\site-packages\django\middleware\common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+    ...<9 lines>...
+    )
+RuntimeError: You called this URL via PUT, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining PUT data. Change your form to point to 127.0.0.1:8000/api/drinks/2/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"PUT /api/drinks/2 HTTP/1.1" 500 69206
