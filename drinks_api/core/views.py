@@ -4,7 +4,9 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, generics
+from .serializers import RegisterSerializer
 from django.shortcuts import get_object_or_404
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from rest_framework import viewsets, permissions
 from .models import Category, Drink
@@ -46,7 +48,7 @@ class CategoryListCreateView(generics.ListCreateAPIView):
     # Handles: GET (list), POST (create)
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAdminOrReadOnly]
     
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -60,7 +62,7 @@ class DrinkListCreateView(generics.ListCreateAPIView):
     # Handles: GET (list), POST (create)
     queryset = Drink.objects.select_related("category").all()
     serializer_class = DrinkSerializer
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAdminOrReadOnly]
 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
@@ -88,3 +90,7 @@ class DrinkViewSet(viewsets.ModelViewSet):
         if self.request.method in ['GET']:
             return [permissions.AllowAny()]
         return [permissions.IsAdminUser()]
+
+class RegisterView(generics.CreateAPIView):
+    serializer_class = RegisterSerializer
+    permission_classes = [permissions.AllowAny]

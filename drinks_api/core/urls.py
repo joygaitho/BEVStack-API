@@ -1,5 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from .views import CategoryViewSet, DrinkViewSet
+from .views import RegisterView
 router = DefaultRouter()
 router.register(r'categories', CategoryViewSet)
 router.register(r'drinks', DrinkViewSet)
@@ -23,5 +24,6 @@ urlpatterns = [
     path('categories/<int:pk>/', CategoryDetailView.as_view(), name='category-detail'),
     path('drinks/', DrinkListCreateView.as_view(), name='drink-list-create'),
     path('drinks/<int:pk>/', DrinkDetailView.as_view(), name='drink-detail'),
+    path('register/', RegisterView.as_view(), name='register'),
 
-]
+] + router.urls
