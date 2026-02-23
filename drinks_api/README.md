@@ -26,7 +26,7 @@ and drinks, with secure authentication using JWT.
 
 ## Project Structure
 
-    bevstack/        # Main project configuration
+    drinks_api/        # Main project configuration
     core/            # Main application containing models, views, serializers
 
 ## Installation
@@ -35,14 +35,14 @@ and drinks, with secure authentication using JWT.
 
     ``` bash
     git clone <your-repo-url>
-    cd bevstack
+    cd BEVStack API
     ```
 
 2.  Create a virtual environment:
 
     ``` bash
-    python -m venv venv
-    source venv/bin/activate  # Windows: venv\Scripts\activate
+    python -m venv .venv
+    source .venv/bin/activate  # Windows: .venv\Scripts\activate
     ```
 
 3.  Install dependencies:
