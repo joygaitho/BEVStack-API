@@ -26,30 +26,30 @@ and drinks, with secure authentication using JWT.
 
 ## Project Structure
 
-    BEVStack-API/
-├── .venv/                      # Python virtual environment
-├── drinks_api/                 # Project configuration folder
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py             # Global settings (JWT, DRF, Database)
-│   ├── urls.py                 # Main URL routing
-│   └── wsgi.py
-├── core/                       # Main application folder
-│   ├── migrations/             # Database migration files
-│   ├── __init__.py
-│   ├── admin.py                # Admin panel configurations
-│   ├── apps.py
-│   ├── exceptions.py           # Base API exception handler
-│   ├── models.py               # Drink and Category models
-│   ├── permissions.py          # IsAdminOrReadOnly logic
-│   ├── serializers.py          # Data validation (Drink & Category Serializers)
-│   ├── tests.py
-│   ├── permissions.py          # custom permissions
-│   ├── urls.py                 # App-specific URL routing
-│   └── views.py                # CRUD, Webhook, and Health Check logic
-├── db.sqlite3                  # Development database
-├── manage.py                   # Django management script
-└── README.md                   # Project documentation
+    BEVStack-API/ 
+    ├── .venv/                      # Python virtual environment
+    ├── drinks_api/                 # Project configuration folder
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py             # Global settings (JWT, DRF, Database)
+    │   ├── urls.py                 # Main URL routing
+    │   └── wsgi.py
+    ├── core/                       # Main application folder
+    │   ├── migrations/             # Database migration files
+    │   ├── __init__.py
+    │   ├── admin.py                # Admin panel configurations
+    │   ├── apps.py
+    │   ├── exceptions.py           # Base API exception handler
+    │   ├── models.py               # Drink and Category models
+    │   ├── permissions.py          # IsAdminOrReadOnly logic
+    │   ├── serializers.py          # Data validation (Drink & Category Serializers)
+    │   ├── tests.py
+    │   ├── permissions.py          # custom permissions
+    │   ├── urls.py                 # App-specific URL routing
+    │   └── views.py                # CRUD, Webhook, and Health Check logic
+    ├── db.sqlite3                  # Development database
+    ├── manage.py                   # Django management script
+    └── README.md                   # Project documentation
 
 ## Installation
 
