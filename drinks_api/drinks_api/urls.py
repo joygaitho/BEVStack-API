@@ -36,6 +36,7 @@ schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
+    authentication_classes=[],
 )
 
 
@@ -50,6 +51,7 @@ urlpatterns = [
 
     # JWT Auth endpoints
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
 ]

@@ -8,13 +8,11 @@ from django.http import Http404
 def custom_exception_handler(exc, context):
     response = exception_handler(exc, context)
 
-    if response is None:
-        return Response(
-            {
-                "error": "Internal server error"
-            },
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR
-        )
+    if response is not None:
+        response.data = {
+            "status_code": response.status_code,
+            "errors": response.data
+        }
 
     if isinstance(exc, ValidationError):
         response.data = {
