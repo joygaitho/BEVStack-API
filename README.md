@@ -161,6 +161,9 @@ http://127.0.0.1:8000/redoc/
 
 The documentation is automatically generated from serializers and viewsets and complies with the OpenAPI specification.
 
+## Deployed API
+https://joygaitho.pythonanywhere.com swagger documentation https://joygaitho.pythonanywhere.com/swagger/
+
 🔐 Authentication (JWT)
 
 This API uses JSON Web Tokens for authentication.
